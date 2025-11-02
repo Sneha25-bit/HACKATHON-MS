@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Cyberpunk Neon Theme - Dark Mode */
+    --background: 0 0% 4%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 100%;
+
+    /* Cyan primary */
+    --primary: 180 100% 50%;
+    --primary-foreground: 0 0% 0%;
+
+    /* Magenta accent */
+    --secondary: 300 100% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 300 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: 180 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Glass effect */
+    --glass-bg: 0 0% 100% / 0.08;
+    --glass-border: 0 0% 100% / 0.18;
+    
+    /* Neon glow */
+    --neon-cyan: 180 100% 50%;
+    --neon-magenta: 300 100% 50%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(180 100% 50% / 0.3), hsl(300 100% 50% / 0.3));
+    --gradient-hero: linear-gradient(135deg, hsl(180 100% 50% / 0.1) 0%, hsl(300 100% 50% / 0.1) 100%);
+  }
+}
+
+@layer utilities {
+  /* Glass card effect */
+  .glass-card {
+    @apply bg-white/[0.08] backdrop-blur-xl border border-white/[0.18] rounded-xl;
+  }
+  
+  .glass-hover {
+    @apply transition-all duration-300 hover:bg-white/[0.12] hover:border-primary/50;
+  }
+  
+  /* Neon glow effects */
+  .neon-glow-cyan {
+    text-shadow: 0 0 10px hsl(var(--neon-cyan)), 
+                 0 0 20px hsl(var(--neon-cyan)),
+                 0 0 30px hsl(var(--neon-cyan));
+  }
+  
+  .neon-glow-magenta {
+    text-shadow: 0 0 10px hsl(var(--neon-magenta)), 
+                 0 0 20px hsl(var(--neon-magenta)),
+                 0 0 30px hsl(var(--neon-magenta));
+  }
+  
+  .neon-border-cyan {
+    box-shadow: 0 0 10px hsl(var(--neon-cyan) / 0.5),
+                0 0 20px hsl(var(--neon-cyan) / 0.3),
+                inset 0 0 10px hsl(var(--neon-cyan) / 0.1);
+  }
+  
+  .neon-border-magenta {
+    box-shadow: 0 0 10px hsl(var(--neon-magenta) / 0.5),
+                0 0 20px hsl(var(--neon-magenta) / 0.3),
+                inset 0 0 10px hsl(var(--neon-magenta) / 0.1);
+  }
+  
+  /* Animated gradient background */
+  .gradient-animate {
+    background: linear-gradient(135deg, 
+      hsl(180 100% 50% / 0.1) 0%, 
+      hsl(300 100% 50% / 0.1) 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 8s ease infinite;
+  }
+  
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
